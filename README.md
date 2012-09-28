@@ -7,5 +7,7 @@ When run with iOS6 going into fullscreen breaks the playback, iOS5 no problems a
 
 For more information & discussion visit the [Stackoverflow question](http://stackoverflow.com/questions/12602899/mpmovieplayercontroller-breaks-stops-after-going-to-fullscreen-in-ios6).
 
-A solution hasn't been found yet.
+A solution has been found:
+
+Using the MPMoviePlayerController's view property instead of the MPMoviePlayerViewController solved the problem
 
