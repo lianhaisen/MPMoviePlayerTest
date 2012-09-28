@@ -12,7 +12,7 @@
 @interface MPTViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (nonatomic, strong) MPMoviePlayerViewController *moviePlayerViewController;
+@property (nonatomic, strong) MPMoviePlayerController *moviePlayerController;
 
 @end
 
@@ -23,23 +23,23 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    MPMoviePlayerViewController *vc = [[MPMoviePlayerViewController alloc] initWithContentURL:nil];
+    MPMoviePlayerController *mc = [[MPMoviePlayerController alloc] initWithContentURL:nil];
     
-    vc.moviePlayer.shouldAutoplay = NO;
-    vc.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
+      mc.shouldAutoplay = NO;
+     mc.controlStyle = MPMovieControlStyleEmbedded;
 
     // video fron http://vimeo.com/50282462 under cc license
     NSURL *contentURL = [[NSBundle mainBundle] URLForResource:@"119654210" withExtension:@"mp4"];
-    vc.moviePlayer.contentURL = contentURL;
+    mc.contentURL = contentURL;
     
-    [vc.moviePlayer prepareToPlay];
+    [mc prepareToPlay];
     
-    vc.view.frame = self.containerView.bounds;
-    [self addChildViewController:vc];
-    [self.containerView addSubview:vc.view];
-    [self.moviePlayerViewController didMoveToParentViewController:self];
+    mc.view.frame = self.containerView.bounds;
+
+    [self.containerView addSubview:mc.view];
+
+    self.moviePlayerController = mc;
     
-    self.moviePlayerViewController = vc;
 }
 
 @end
